@@ -152,6 +152,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-GTF与GFF文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第二章：文件格式介绍01：GTF与GFF文件"><a href="#第二章：文件格式介绍01：GTF与GFF文件" class="headerlink" title="第二章：文件格式介绍01：GTF与GFF文件"></a>第二章：文件格式介绍01：GTF与GFF文件</h1><h2 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a><em><strong>一、简单介绍</strong></em></h2><ul>
+<li>GFF和GTF是两种最常用的<strong>数据库注释格式。</strong></li>
+<li>在信息分析中建库时除了需要fasta文件一般还会需要GFF和GTF文件。</li>
+</ul>
+<ol>
+<li><strong>GFF</strong>全称为general feature format，这种格式主要是用来注释基因组。</li>
+<li><strong>GTF</strong>全称为gene transfer format，主要是用来对基因进行注释。</li>
+</ol>
+<h2 id="二、区别与联系"><a href="#二、区别与联系" class="headerlink" title="二、区别与联系"></a><em><strong>二、区别与联系</strong></em></h2><ul>
+<li>GTF是在GFF的基础上发展而来。</li>
+<li>二者有很多类似的地方，都是<code>\t</code>分隔的9列文件，内容也比较接近。</li>
+<li>GFF能够包含的信息更多更全，可以包含染色体，基因，转录本的信息。</li>
+<li>而GTF主要用来描述基因和转录本的信息。</li>
+<li>相互转化：如使用<strong>Cufflinks软件的 的gffread</strong>。</li>
+</ul>
+<h2 id="三、GTF格式介绍"><a href="#三、GTF格式介绍" class="headerlink" title="三、GTF格式介绍"></a><em><strong>三、GTF格式介绍</strong></em></h2><p>以某物种的GTF文件为例（gtf文件是以tab键分割的9列组成，以下为每一列的对应信息）：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chr1	ensembl	gene	339070	350389	.	-	.	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;;</span><br><span class="line">chr1	ensembl	transcript	339070	350389	.	-	.	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;;</span><br><span class="line">chr1	ensembl	exon	350267	350389	.	-	.	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;1&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;; exon_id &quot;ENSBTAE00000512015&quot;; exon_version &quot;1&quot;;</span><br><span class="line">chr1	ensembl	CDS	350267	350389	.	-	0	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;1&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;; protein_id &quot;ENSBTAP00000008737&quot;; protein_version &quot;6&quot;;</span><br><span class="line">chr1	ensembl	start_codon	350387	350389	.	-	0	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;1&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;;</span><br><span class="line">chr1	ensembl	exon	346602	346924	.	-	.	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;2&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;; exon_id &quot;ENSBTAE00000062541&quot;; exon_version &quot;4&quot;;</span><br><span class="line">chr1	ensembl	CDS	346602	346924	.	-	0	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;2&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;; protein_id &quot;ENSBTAP00000008737&quot;; protein_version &quot;6&quot;;</span><br><span class="line">chr1	ensembl	exon	342547	342721	.	-	.	gene_id &quot;ENSBTAG00000006648&quot;; gene_version &quot;6&quot;; transcript_id &quot;ENSBTAT00000008737&quot;; transcript_version &quot;6&quot;; exon_number &quot;3&quot;; gene_source &quot;ensembl&quot;; gene_biotype &quot;protein_coding&quot;; transcript_source &quot;ensembl&quot;; transcript_biotype &quot;protein_coding&quot;; exon_id &quot;ENSBTAE00000470282&quot;; exon_version &quot;2&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>以下为每一列信息：</p>
+<ol>
+<li><strong>seq_id</strong>：序列的编号，一般为chr或者scanfold编号，每条染色体拥有一个唯一的ID。</li>
+<li><strong>source</strong>: 注释的来源，代表基因结构的来源，可以是数据库的名称，比如来自<code>RefSeq</code>数据库，也可以是软件的名称，比如用<code>GeneScan</code>软件预测得到，当然，也可以为空，用<code>.</code>点号填充。</li>
+<li><strong>type</strong>: 代表区间对应的特征类型, 在GTF中，常见的类型如下：</li>
+</ol>
+<ul>
+<li>Gene</li>
+<li>cDNA</li>
+<li>mRNA</li>
+<li>5UTR</li>
+<li>3UTR</li>
+<li>exon</li>
+<li>CDS</li>
+<li>start_codon</li>
+<li>stop_codon</li>
+</ul>
+<p>4.<strong>start</strong>:该基因或转录本在参考序列上的起始位置。</p>
+<p>5.<strong>end</strong>: 该基因或转录本在参考序列上的终止位置。</p>
+<p>6.<strong>score</strong>: 得分，软件提供了统计值，是注释信息可能性的说明，可以是序列相似性比对时的E-values值或者基因预测是的P-values值，“.”表示为空。</p>
+<p>7.<strong>strand</strong>: 代表正负链的信息,<code>+</code>表示正链，<code>-</code>表示负链，<code>?</code>表示不清楚正负链的信息，当正负链信息没有意义时，可以用<code>.</code>填充。</p>
+<p>8.<strong>phase</strong>: 仅对注释类型为“<strong>CDS</strong>”有效，表示起始编码的位置，有效值为0、1、2</p>
+<ul>
+<li><strong>对于编码蛋白质的CDS来说</strong>，本列指定下一个密码子开始的位置。每3个核苷酸翻译一个氨基酸，从0开始，CDS的起始位置，除以3，余数就是这个值，表示到达下一个密码子需要跳过的碱基个数。</li>
+<li>该编码区第一个密码子的位置，取值0,1,2。</li>
+<li>0表示该编码框的第一个密码子第一个碱基位于其5’末端；</li>
+<li>1表示该编码框的第一个密码子的第一个碱基位于该编码区外；</li>
+<li>2表示该编码框的第一个密码子的第一、二个碱基位于该编码区外；</li>
+<li>如果Feature为CDS时，必须指明具体值；</li>
+</ul>
+<p>9.<strong>attributes</strong>:一个包含众多属性的列表，格式为“标签＝值”（tag&#x3D;value）。</p>
+<ul>
+<li>标签与值之间以空格分开，且每个特征之后都要有分号（包括最后一个特征）；其内容必须包括gene_id和transcript_id。</li>
+<li>以多个键值对组成的注释信息描述，键与值之间用“&#x3D;”，不同的键值用“；”。</li>
+</ul>
+<h2 id="四、数据"><a href="#四、数据" class="headerlink" title="四、数据"></a><em><strong>四、数据</strong></em></h2><p><a href="ftp://ftp.ensembl.org/pub/release-93/gtf/homo_sapiens/Homo_sapiens.GRCh38.93.gtf.gz">ftp://ftp.ensembl.org/pub/release-93/gtf/homo_sapiens/Homo_sapiens.GRCh38.93.gtf.gz</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/28/GTF%E4%B8%8EGFF%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
